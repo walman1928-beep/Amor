@@ -11,24 +11,26 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI', sans-serif;
 }
 
 body{
-    overflow:hidden;
-    height:100vh;
     background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
     display:flex;
     justify-content:center;
     align-items:center;
+    min-height:100vh;
     color:white;
     position:relative;
+    overflow-x:hidden;
+    padding:20px;
 }
 
+/* TARJETA */
 .card{
-    width:90%;
-    max-width:700px;
-    padding:40px;
+    width:100%;
+    max-width:650px;
+    padding:25px;
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
     border-radius:25px;
@@ -38,28 +40,31 @@ body{
     animation: aparecer 2s ease;
 }
 
+/* TITULO */
 .card h1{
-    font-size:3rem;
+    font-size:2.2rem;
     margin-bottom:20px;
 }
 
+/* TEXTO */
 .card p{
-    font-size:1.2rem;
-    line-height:1.8;
+    font-size:1rem;
+    line-height:1.7;
 }
 
-/* ESTILO DE LAS FOTOS */
+/* GALERIA */
 .galeria{
     display:flex;
     justify-content:center;
-    gap:15px;
+    gap:12px;
     flex-wrap:wrap;
-    margin:25px 0;
+    margin:20px 0;
 }
 
+/* FOTOS */
 .foto{
-    width:220px;
-    height:220px;
+    width:180px;
+    height:180px;
     object-fit:cover;
     border-radius:20px;
     border:4px solid white;
@@ -71,6 +76,33 @@ body{
     transform:scale(1.05);
 }
 
+/* BOTON */
+.btn{
+    margin-top:25px;
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    background:#ffe3ec;
+}
+
+/* MENSAJE */
+#mensaje2{
+    display:none;
+    margin-top:20px;
+    animation: aparecer 1s ease;
+}
+
+/* CORAZONES */
 .heart{
     position:absolute;
     color:#fff;
@@ -107,25 +139,31 @@ body{
     }
 }
 
-.btn{
-    margin-top:30px;
-    padding:15px 30px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#ff4f81;
-    font-size:1rem;
-    cursor:pointer;
-    transition:0.3s;
-    font-weight:bold;
-}
+/* RESPONSIVE PARA CELULAR */
+@media(max-width:600px){
 
-.btn:hover{
-    transform:scale(1.08);
-    background:#ffe3ec;
-}
+    .card{
+        padding:20px;
+    }
 
-#mensaje2{
+    .card h1{
+        font-size:1.8rem;
+    }
+
+    .card p{
+        font-size:0.95rem;
+    }
+
+    .foto{
+        width:140px;
+        height:140px;
+    }
+
+    .btn{
+        width:100%;
+        font-size:0.95rem;
+    }
+}#mensaje2{
     display:none;
     margin-top:20px;
     animation: aparecer 1s ease;
