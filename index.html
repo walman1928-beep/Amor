@@ -6,115 +6,153 @@
 <title>Para Ti ❤️</title>
 
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: 'Segoe UI', sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    position:relative;
+}
+
+.card{
+    width:90%;
+    max-width:700px;
+    padding:40px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 8px 30px rgba(0,0,0,0.2);
+    z-index:10;
+    animation: aparecer 2s ease;
+}
+
+.card h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.card p{
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+/* ESTILO DE LAS FOTOS */
+.galeria{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.foto{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    border:4px solid white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.4s;
+}
+
+.foto:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+    position:absolute;
+    color:#fff;
+    font-size:20px;
+    animation: caer linear infinite;
+    opacity:0.8;
+}
+
+@keyframes caer{
+    0%{
+        transform: translateY(-10vh) rotate(0deg);
+        opacity:0;
     }
 
-    body{
-        overflow:hidden;
-        height:100vh;
-        background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        color:white;
-        position:relative;
+    10%{
+        opacity:1;
     }
 
-    .card{
-        width:90%;
-        max-width:700px;
-        padding:40px;
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(10px);
-        border-radius:25px;
-        text-align:center;
-        box-shadow:0 8px 30px rgba(0,0,0,0.2);
-        z-index:10;
-        animation: aparecer 2s ease;
+    100%{
+        transform: translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes aparecer{
+    from{
+        transform:scale(0.7);
+        opacity:0;
     }
 
-    .card h1{
-        font-size:3rem;
-        margin-bottom:20px;
+    to{
+        transform:scale(1);
+        opacity:1;
     }
+}
 
-    .card p{
-        font-size:1.2rem;
-        line-height:1.8;
-    }
+.btn{
+    margin-top:30px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
 
-    .heart{
-        position:absolute;
-        color:#fff;
-        font-size:20px;
-        animation: caer linear infinite;
-        opacity:0.8;
-    }
+.btn:hover{
+    transform:scale(1.08);
+    background:#ffe3ec;
+}
 
-    @keyframes caer{
-        0%{
-            transform: translateY(-10vh) rotate(0deg);
-            opacity:0;
-        }
-        10%{
-            opacity:1;
-        }
-        100%{
-            transform: translateY(110vh) rotate(360deg);
-            opacity:0;
-        }
-    }
+#mensaje2{
+    display:none;
+    margin-top:20px;
+    animation: aparecer 1s ease;
+}
 
-    @keyframes aparecer{
-        from{
-            transform:scale(0.7);
-            opacity:0;
-        }
-        to{
-            transform:scale(1);
-            opacity:1;
-        }
-    }
-
-    .btn{
-        margin-top:30px;
-        padding:15px 30px;
-        border:none;
-        border-radius:30px;
-        background:white;
-        color:#ff4f81;
-        font-size:1rem;
-        cursor:pointer;
-        transition:0.3s;
-        font-weight:bold;
-    }
-
-    .btn:hover{
-        transform:scale(1.08);
-        background:#ffe3ec;
-    }
-
-    #mensaje2{
-        display:none;
-        margin-top:20px;
-        animation: aparecer 1s ease;
-    }
 </style>
 </head>
 
 <body>
 
 <div class="card">
+
     <h1>Para Mi Amor ❤️</h1>
 
+    <!-- GALERÍA DE FOTOS -->
+    <div class="galeria">
+
+        <img src="Diana.jpg" class="foto">
+        <img src="Juntos.jpg" class="foto">
+
+    </div>
+
     <p>
-        Desde que llegaste a mi vida, todo tiene más color, más alegría y más sentido.
+        Desde que llegaste a mi vida, todo tiene más color,
+        más alegría y más sentido.
         Gracias por cada sonrisa, cada abrazo y cada momento juntos.
-        Eres lo más bonito que me ha pasado.
+        Eres lo más bonito que me ha pasado ❤️
     </p>
 
     <button class="btn" onclick="mostrarMensaje()">
@@ -124,31 +162,36 @@
     <p id="mensaje2">
         "Cuando te vi me enamoré y tú sonreíste porque lo sabías." ❤️
     </p>
+
 </div>
 
 <script>
-    function mostrarMensaje(){
-        document.getElementById("mensaje2").style.display = "block";
-    }
 
-    // Crear corazones cayendo
-    function crearCorazon(){
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤";
+function mostrarMensaje(){
+    document.getElementById("mensaje2").style.display = "block";
+}
 
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+// Crear corazones cayendo
+function crearCorazon(){
 
-        document.body.appendChild(heart);
+    const heart = document.createElement("div");
 
-        setTimeout(()=>{
-            heart.remove();
-        },7000);
-    }
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
 
-    setInterval(crearCorazon,300);
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(crearCorazon,300);
+
 </script>
 
 </body>
